@@ -1,0 +1,197 @@
+{
+  "WFWorkflowMinimumClientVersionString": "900",
+  "WFWorkflowMinimumClientVersion": 900,
+  "WFWorkflowIcon": {
+    "WFWorkflowIconStartColor": 2071128575,
+    "WFWorkflowIconGlyphNumber": 61440
+  },
+  "WFWorkflowClientVersion": "2605.0.5",
+  "WFWorkflowOutputContentItemClasses": [
+    "WFContentItem",
+    "WFStringContentItem"
+  ],
+  "WFWorkflowHasOutputFallback": false,
+  "WFWorkflowActions": [
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.comment",
+      "WFWorkflowActionParameters": {
+        "WFCommentActionText": "JITPhone Demo - Fibonacci Calculator\nThis shortcut demonstrates how to use the JITPhone server for JIT-optimized calculations on iOS.\n\nMake sure your JITPhone server is running at the IP address specified below."
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.ask",
+      "WFWorkflowActionParameters": {
+        "WFAskActionPrompt": "Enter Fibonacci number (1-40):",
+        "WFInputType": "Number",
+        "WFAskActionDefaultAnswer": "10"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.text",
+      "WFWorkflowActionParameters": {
+        "WFTextActionText": {
+          "Value": {
+            "string": "{\n  \"code\": \"function fibonacci(n) { if (n <= 0) return 0; if (n === 1) return 1; let a = 0; let b = 1; let temp; for (let i = 2; i <= n; i++) { temp = a + b; a = b; b = temp; } return b; } fibonacci(input.n);\",\n  \"optimizationLevel\": \"O2\",\n  \"target\": \"shortcuts\",\n  \"timeout\": 30000\n}",
+            "attachmentsByRange": {}
+          },
+          "WFSerializationType": "WFTextTokenString"
+        }
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.url",
+      "WFWorkflowActionParameters": {
+        "WFURLActionURL": "http://YOUR_SERVER_IP:3000/jit/compile"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.downloadurl",
+      "WFWorkflowActionParameters": {
+        "WFHTTPMethod": "POST",
+        "WFHTTPHeaders": {
+          "Content-Type": "application/json"
+        },
+        "WFHTTPBodyType": "JSON",
+        "WFHTTPJSON": {
+          "Value": {
+            "OutputUUID": "text-output-uuid",
+            "Type": "ActionOutput",
+            "OutputName": "Text"
+          },
+          "WFSerializationType": "WFTextTokenAttachment"
+        }
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.detect.dictionary",
+      "WFWorkflowActionParameters": {}
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.getvalueforkey",
+      "WFWorkflowActionParameters": {
+        "WFDictionaryKey": "result"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.getvalueforkey",
+      "WFWorkflowActionParameters": {
+        "WFDictionaryKey": "compiled"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.text",
+      "WFWorkflowActionParameters": {
+        "WFTextActionText": {
+          "Value": {
+            "string": "{\n  \"compiledCode\": \"COMPILED_CODE_PLACEHOLDER\",\n  \"input\": {\n    \"n\": INPUT_NUMBER_PLACEHOLDER\n  },\n  \"timeout\": 10000\n}",
+            "attachmentsByRange": {
+              "{17, 25}": {
+                "OutputUUID": "compiled-code-uuid",
+                "Type": "ActionOutput",
+                "OutputName": "Text"
+              },
+              "{58, 23}": {
+                "OutputUUID": "input-number-uuid", 
+                "Type": "ActionOutput",
+                "OutputName": "Provided Input"
+              }
+            }
+          },
+          "WFSerializationType": "WFTextTokenString"
+        }
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.url",
+      "WFWorkflowActionParameters": {
+        "WFURLActionURL": "http://YOUR_SERVER_IP:3000/jit/execute"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.downloadurl",
+      "WFWorkflowActionParameters": {
+        "WFHTTPMethod": "POST",
+        "WFHTTPHeaders": {
+          "Content-Type": "application/json"
+        },
+        "WFHTTPBodyType": "JSON"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.detect.dictionary",
+      "WFWorkflowActionParameters": {}
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.getvalueforkey",
+      "WFWorkflowActionParameters": {
+        "WFDictionaryKey": "result"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.text",
+      "WFWorkflowActionParameters": {
+        "WFTextActionText": {
+          "Value": {
+            "string": "🔥 JIT-Optimized Result 🔥\n\nFibonacci(INPUT_PLACEHOLDER) = RESULT_PLACEHOLDER\n\n⚡ Calculated with Node.js JIT compilation\n📱 Adapted for iOS Shortcuts\n🚀 Performance boost enabled!",
+            "attachmentsByRange": {
+              "{39, 17}": {
+                "Type": "ActionOutput",
+                "OutputName": "Provided Input"
+              },
+              "{59, 18}": {
+                "Type": "ActionOutput", 
+                "OutputName": "Text"
+              }
+            }
+          },
+          "WFSerializationType": "WFTextTokenString"
+        }
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.showresult",
+      "WFWorkflowActionParameters": {}
+    }
+  ],
+  "WFWorkflowInputContentItemClasses": [
+    "WFAppContentItem",
+    "WFAppStoreAppContentItem",
+    "WFArticleContentItem",
+    "WFContactContentItem",
+    "WFDateContentItem",
+    "WFEmailAddressContentItem",
+    "WFGenericFileContentItem",
+    "WFImageContentItem",
+    "WFiTunesProductContentItem",
+    "WFLocationContentItem",
+    "WFDCMapsLinkContentItem",
+    "WFAVAssetContentItem",
+    "WFPDFContentItem",
+    "WFPhoneNumberContentItem",
+    "WFRichTextContentItem",
+    "WFSafariWebPageContentItem",
+    "WFStringContentItem",
+    "WFURLContentItem"
+  ],
+  "WFWorkflowImportQuestions": [
+    {
+      "Category": "Parameter",
+      "ParameterKey": "WFURLActionURL",
+      "ActionIndex": 3,
+      "Text": "What is your JITPhone server IP address?",
+      "DefaultAnswer": "http://192.168.1.100:3000/jit/compile"
+    },
+    {
+      "Category": "Parameter", 
+      "ParameterKey": "WFURLActionURL",
+      "ActionIndex": 9,
+      "Text": "Confirm your JITPhone server IP for execution:",
+      "DefaultAnswer": "http://192.168.1.100:3000/jit/execute"
+    }
+  ],
+  "WFWorkflowTypes": [
+    "NCWidget",
+    "WatchKit"
+  ],
+  "WFWorkflowHasShortcutInputVariables": false
+} 
