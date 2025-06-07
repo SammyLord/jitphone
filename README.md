@@ -1,8 +1,8 @@
-# JITPhone Server 🚀📱
+# jitPhone Server 🚀📱
 
 **Bring Node.js JIT performance to iOS Shortcuts!**
 
-JITPhone is a server that enables JIT (Just-In-Time) compilation capabilities for non-jailbroken iOS devices by translating Node.js JIT optimizations into iOS-compatible JavaScript code that can be executed through Apple Shortcuts.
+jitPhone is a server that enables JIT (Just-In-Time) compilation capabilities for non-jailbroken iOS devices by translating Node.js JIT optimizations into iOS-compatible JavaScript code that can be executed through Apple Shortcuts and other iOS apps (if supported by said app.)
 
 ## 🌟 Features
 
