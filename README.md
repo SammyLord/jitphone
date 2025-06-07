@@ -316,12 +316,6 @@ A: iOS 12+ for Shortcuts, iOS 9+ for WebView, iOS 8+ for JavaScriptCore
 **Q: Can I host this publicly?**
 A: Yes, but ensure proper security measures including HTTPS, authentication, and firewall configuration.
 
-## 📞 Support
-
-- **Issues**: [GitHub Issues](https://github.com/yourusername/jitphone/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/jitphone/discussions)
-- **Email**: support@jitphone.dev
-
 ---
 
 **Made with ❤️ for the iOS development community**
